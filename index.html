@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarjuma - Arabic Lyric Visualizer</title>
+    <title>Tarjuma Pro - AI Video Captions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,18 +21,18 @@
             font-family: 'Amiri', serif;
             direction: rtl;
         }
-        ::-webkit-scrollbar {
-            width: 8px;
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
         }
-        ::-webkit-scrollbar-track {
-            background: #111;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0a0a0a;
         }
-        ::-webkit-scrollbar-thumb {
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #444;
         }
     </style>
 <script type="importmap">
@@ -50,5 +49,7 @@
 </head>
 <body>
     <div id="root"></div>
+    <!-- استدعاء ملف الـ Entry Point يدوياً لضمان عمله في بيئات النشر المختلفة -->
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
