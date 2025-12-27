@@ -2,9 +2,10 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { AutoCaptionResponse } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const transcribeVideo = async (base64Media: string, mimeType: string): Promise<AutoCaptionResponse> => {
+  // Always create a new instance right before the call as per requirements
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
     contents: [
@@ -43,7 +44,9 @@ export const transcribeVideo = async (base64Media: string, mimeType: string): Pr
   });
 
   try {
-    return JSON.parse(response.text.trim()) as AutoCaptionResponse;
+    const text = response.text;
+    if (!text) throw new Error("Empty response from AI");
+    return JSON.parse(text.trim()) as AutoCaptionResponse;
   } catch (error) {
     console.error("Transcription failed:", error);
     throw new Error("Failed to extract captions");
