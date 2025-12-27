@@ -31,10 +31,6 @@ const App: React.FC = () => {
       return;
     }
     setExportStatus('rendering');
-    // Simulate render time
-    setTimeout(() => {
-      setExportStatus('success');
-    }, 5500);
   };
 
   const handleSendEmail = (email: string) => {
@@ -43,7 +39,7 @@ const App: React.FC = () => {
     // Simulate API call
     setTimeout(() => {
       alert("تم إرسال الرابط إلى " + email);
-      setExportStatus('idle');
+      setExportStatus('success'); // Stay in success to keep preview
     }, 2000);
   };
 
@@ -106,6 +102,7 @@ const App: React.FC = () => {
 
       <ExportModal 
         status={exportStatus} 
+        project={project}
         onClose={() => setExportStatus('idle')}
         onSendEmail={handleSendEmail}
       />
