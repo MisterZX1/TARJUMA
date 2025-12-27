@@ -1,0 +1,7 @@
+{
+  "name": "Tarjuma - Arabic Lyric Visualizer",
+  "description": "A high-end platform for translating songs into poetic Arabic and generating synchronized lyric videos with dynamic visual styles.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
